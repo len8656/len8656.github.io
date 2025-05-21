@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <title>个人网站</title>
     <script>
-    function openApp(url) {
-        window.location.href = url;
-    }
-    
-    window.onload = function() {
-        setTimeout(function() {
-            openApp('https://notta.onelink.me/HOdi/yjx0lu0h?code=01JV74QC8HD0ZVC59N4DHCCH2F');
-        }, 5000);
-    };
+        const targetUrl = 'https://notta.onelink.me/HOdi/yjx0lu0h?code=01JV74QC8HD0ZVC59N4DHCCH2F';
+
+        function openApp(url) {
+            window.location.href = url;
+        }
+
+        // 提示用户手动点击，而不是自动跳转
+        window.onload = function () {
+            document.getElementById('manualNotice').style.display = 'block';
+        };
     </script>
 </head>
 <body>
@@ -24,11 +25,10 @@
         <li><a href="https://www.baidu.com">baidu</a></li>
         <li><a href="#" onclick="openApp('https://notta.onelink.me/HOdi/yjx0lu0h?code=01JV74QC8HD0ZVC59N4DHCCH2F')">notta open yjx0lu0h</a></li>
         <li><a href="#" onclick="openApp('https://notta.onelink.me/cpBZ/t97tk4qo')">notta open t97tk4qo</a></li>
-        <li><a href="#" onclick="openApp('https://notta.onelink.me/cpBZ/t97tk4qo')">notta open t97tk4qo</a></li>
     </ul>
     
     <h2>正在打开 App，请点击下方按钮</h2>
-    <button onclick="openApp('https://notta.onelink.me/cpBZ/t97tk4qo')">打开 App</button>
+    <p id="manualNotice" style="display:none; color:red;">为保证安全，iOS 要求您点击按钮以跳转 App</p>
+    <button onclick="openApp(targetUrl)">打开 App</button>
 </body>
 </html>
-
