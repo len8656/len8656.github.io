@@ -10,8 +10,7 @@
             return params.get(name);
         }
 
-        // 构造目标跳转 URL
-        const code = getQueryParam('code') || 'default_code'; // 默认值防止为空
+        const code = getQueryParam('code') || '未提供';
         const targetUrl = `https://notta.onelink.me/HOdi/yjx0lu0h?code=${code}`;
 
         function openApp(url) {
@@ -19,7 +18,11 @@
         }
 
         window.onload = function () {
+            // 显示提示信息
             document.getElementById('manualNotice').style.display = 'block';
+
+            // 显示 code 值
+            document.getElementById('codeDisplay').textContent = code;
         };
     </script>
 </head>
@@ -37,5 +40,9 @@
     <h2>正在打开 App，请点击下方按钮</h2>
     <p id="manualNotice" style="display:none; color:red;">为保证安全，iOS 要求您点击按钮以跳转 App</p>
     <button onclick="openApp(targetUrl)">打开 App</button>
+
+    <!-- 新增：显示 code -->
+    <h3>当前传入的 code 参数是：</h3>
+    <p id="codeDisplay" style="font-weight: bold; font-size: 1.2em; color: blue;"></p>
 </body>
 </html>
