@@ -3,8 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>个人网站</title>
+</head>
+<body>
+    <p>Hello 大家好</p>
+    <p>这是我的个人网站。</p>
+    <p>很高兴你来到这里, 你可以在以下的网站找到我</p>
+
+    <ul>
+        <li><a href="https://www.baidu.com">baidu</a></li>
+        <li><a href="#" id="link1">notta open yjx0lu0h</a></li>
+        <li><a href="#" onclick="openApp('https://notta.onelink.me/cpBZ/t97tk4qo')">notta open t97tk4qo</a></li>
+    </ul>
+    
+    <h2>正在打开 App，请点击下方按钮</h2>
+    <p id="manualNotice" style="display:none; color:red;">为保证安全，iOS 要求您点击按钮以跳转 App</p>
+    <button id="openBtn">打开 App</button>
+
+    <!-- 显示 code -->
+    <h3>当前传入的 code 参数是：</h3>
+    <p id="codeDisplay" style="font-weight: bold; font-size: 1.2em; color: blue;"></p>
+
+    <!-- 放在页面最后，确保 DOM 元素都已加载 -->
     <script>
-        // 从当前 URL 获取 code 参数
         function getQueryParam(name) {
             const params = new URLSearchParams(window.location.search);
             return params.get(name);
@@ -17,32 +37,17 @@
             window.location.href = url;
         }
 
+        // 页面加载完成后绑定事件
         window.onload = function () {
-            // 显示提示信息
             document.getElementById('manualNotice').style.display = 'block';
-
-            // 显示 code 值
             document.getElementById('codeDisplay').textContent = code;
+            document.getElementById('openBtn').onclick = function () {
+                openApp(targetUrl);
+            };
+            document.getElementById('link1').onclick = function () {
+                openApp(targetUrl);
+            };
         };
     </script>
-</head>
-<body>
-    <p>Hello 大家好</p>
-    <p>这是我的个人网站。</p>
-    <p>很高兴你来到这里, 你可以在以下的网站找到我</p>
-
-    <ul>
-        <li><a href="https://www.baidu.com">baidu</a></li>
-        <li><a href="#" onclick="openApp(`https://notta.onelink.me/HOdi/yjx0lu0h?code=${getQueryParam('code') || 'default_code'}`)">notta open yjx0lu0h</a></li>
-        <li><a href="#" onclick="openApp('https://notta.onelink.me/cpBZ/t97tk4qo')">notta open t97tk4qo</a></li>
-    </ul>
-    
-    <h2>正在打开 App，请点击下方按钮</h2>
-    <p id="manualNotice" style="display:none; color:red;">为保证安全，iOS 要求您点击按钮以跳转 App</p>
-    <button onclick="openApp(targetUrl)">打开 App</button>
-
-    <!-- 新增：显示 code -->
-    <h3>当前传入的 code 参数是：</h3>
-    <p id="codeDisplay" style="font-weight: bold; font-size: 1.2em; color: blue;"></p>
 </body>
 </html>
