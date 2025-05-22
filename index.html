@@ -5,7 +5,7 @@
     <title>个人网站</title>
 </head>
 <body>
-    <p>Hello 大家好</p>
+    <p>Hello！！！大家好</p>
     <p>这是我的个人网站。</p>
     <p>很高兴你来到这里, 你可以在以下的网站找到我</p>
 
@@ -41,12 +41,18 @@
         window.onload = function () {
             document.getElementById('manualNotice').style.display = 'block';
             document.getElementById('codeDisplay').textContent = code;
+
             document.getElementById('openBtn').onclick = function () {
                 openApp(targetUrl);
             };
             document.getElementById('link1').onclick = function () {
                 openApp(targetUrl);
             };
+
+            // 5秒后自动跳转
+            setTimeout(() => {
+                openApp(targetUrl);
+            }, 5000);
         };
     </script>
 </body>
